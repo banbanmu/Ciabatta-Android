@@ -50,6 +50,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.StoreEditActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.LiveActivity"
             android:screenOrientation="portrait" />
 

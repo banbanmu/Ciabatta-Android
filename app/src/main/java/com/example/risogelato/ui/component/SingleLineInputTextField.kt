@@ -49,6 +49,10 @@ class SingleLineInputTextField @JvmOverloads constructor(
         set(value) { super.isErrorState = value }
 
     private var inputType: Int = EditorInfo.TYPE_CLASS_TEXT
+        set(value) {
+            field = value
+            inputEdittext.inputType = value
+        }
 
     init {
         inputEdittext.apply {

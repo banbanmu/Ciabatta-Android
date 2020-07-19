@@ -100,6 +100,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBtnListener() {
+        btn_edit.setOnClickListener {
+            store?.let {
+                startActivity(StoreEditActivity.newIntent(this, it))
+            }
+        }
         btn_start_broadcast.setOnClickListener {
             checkPermissions { navigateToLive() }
         }

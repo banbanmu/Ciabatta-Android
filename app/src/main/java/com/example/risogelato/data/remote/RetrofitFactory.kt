@@ -4,7 +4,7 @@ import android.content.Context
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "http://ec2-13-125-64-69.ap-northeast-2.compute.amazonaws.com:8080"
+const val BASE_URL = "http://ec2-13-209-89-24.ap-northeast-2.compute.amazonaws.com:8080"
 
 class RetrofitFactory(context: Context) {
 

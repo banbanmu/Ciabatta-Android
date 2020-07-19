@@ -20,6 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_live.*
+import kotlinx.android.synthetic.main.view_order_item.view.*
 import java.util.concurrent.TimeUnit
 
 private const val STORE_INTENT_KEY = "STORE_INTENT_KEY"
@@ -31,6 +32,9 @@ class LiveActivity : AppCompatActivity() {
 
     private lateinit var store: Store
 
+    private var timeStamp = 0L
+
+    private val intervalMap = mutableMapOf<Order, Interval>()
     private val disposables = CompositeDisposable()
 
     companion object {
@@ -62,7 +66,7 @@ class LiveActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        rtcEngine()?.leaveChannel()
+//        rtcEngine()?.leaveChannel()
         disposables.clear()
     }
 
@@ -93,6 +97,7 @@ class LiveActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                timeStamp = System.currentTimeMillis()
                 joinChannel(it.channelName, it.uid)
             }, Throwable::printStackTrace)
             .let { disposables.add(it) }
@@ -103,11 +108,20 @@ class LiveActivity : AppCompatActivity() {
     }
 
     private fun stopLive() {
-        val clipInfoList = ClipInfoList(listOf(
-            ClipInfo("제육볶음", 3000, 5000),
-            ClipInfo("오징어볶음", 10000, 3000)
-        ))
-        Observable.fromCallable { liveDataSource.stop(clipInfoList) }
+        rtcEngine()?.leaveChannel()
+        val clipInfos = mutableListOf<ClipInfo>()
+
+        intervalMap.forEach { (order, interval) ->
+            if (interval.endMillis <= 0) return@forEach
+
+            clipInfos.add(ClipInfo(
+                order.menuName,
+                interval.startMillis,
+                interval.endMillis - interval.startMillis
+            ))
+        }
+
+        Observable.fromCallable { liveDataSource.stop(ClipInfoList(clipInfos)) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -156,6 +170,8 @@ class LiveActivity : AppCompatActivity() {
 
                 orders.forEach { order ->
                     val view = LayoutInflater.from(this).inflate(R.layout.view_order_item, null).apply {
+                        txt_order.text = order.menuName
+
                         setOnClickListener {
                             when(order.state) {
                                 State.NOT_STARTED -> startOrder(order)
@@ -178,6 +194,7 @@ class LiveActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                intervalMap[order] = Interval(startMillis = System.currentTimeMillis() - timeStamp)
                 loadOrderList()
             }, Throwable::printStackTrace)
             .let { disposables.add(it) }
@@ -188,6 +205,9 @@ class LiveActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                intervalMap[order]?.let {
+                    intervalMap[order] = it.apply { endMillis = System.currentTimeMillis() - timeStamp }
+                }
                 loadOrderList()
             }, Throwable::printStackTrace)
             .let { disposables.add(it) }
@@ -196,4 +216,6 @@ class LiveActivity : AppCompatActivity() {
     private fun getBaseApplication() = application as BaseApplication
 
     private fun rtcEngine() = getBaseApplication().rtcEngine
+
+    data class Interval(var startMillis: Long = 0L, var endMillis: Long = 0L)
 }
