@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/label_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/grey200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="design_label" />
+
+    <com.example.risogelato.ui.component.InterceptConstraintLayout
+        android:id="@+id/box_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/selector_bg_stroke_grey"
+        app:layout_constraintTop_toBottomOf="@+id/label_textview">
+
+        <EditText
+            android:id="@+id/txt_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/grey400"
+            android:textColorHint="@color/grey120"
+            android:textSize="15sp"
+            android:enabled="false"
+            android:clickable="false"
+            android:focusable="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_down"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/outline_expand_more_black_18"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </com.example.risogelato.ui.component.InterceptConstraintLayout>
+
+    <TextView
+        android:id="@+id/helper_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:duplicateParentState="true"
+        android:textColor="@color/selector_text_field_helper_text_color"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/box_input"
+        tools:text="design_helper" />
+</merge>

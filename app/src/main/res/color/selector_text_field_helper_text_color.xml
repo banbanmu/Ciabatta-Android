@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:color="@color/grey150" android:state_enabled="false" />
+    <item android:color="@color/red100" app:state_error="true"
+        tools:color="@color/grey150"/>
+    <item android:color="@color/grey150" />
+
+</selector>

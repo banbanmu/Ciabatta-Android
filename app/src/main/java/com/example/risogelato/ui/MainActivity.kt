@@ -1,4 +1,4 @@
-package com.example.risogelato
+package com.example.risogelato.ui
 
 import android.Manifest
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.risogelato.ui.LiveActivity
+import com.example.risogelato.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val PERMISSION_REQ_CODE = 1000
@@ -60,7 +60,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermissions() {
-        ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQ_CODE)
+        ActivityCompat.requestPermissions(this, permissions,
+            PERMISSION_REQ_CODE
+        )
     }
 
     private fun navigateToLive() {

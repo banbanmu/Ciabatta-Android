@@ -4,18 +4,40 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.risogelato.R
 import com.example.risogelato.common.BaseApplication
+import com.example.risogelato.data.remote.source.LiveDataSource
+import com.example.risogelato.data.remote.source.LiveDataSourceImpl
 import io.agora.rtc.RtcEngine
 import io.agora.rtc.video.VideoCanvas
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_live.*
+import java.util.concurrent.TimeUnit
 
 class LiveActivity : AppCompatActivity() {
+
+    private lateinit var liveDataSource: LiveDataSource
+
+    private val disposables = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_live)
 
+        liveDataSource = LiveDataSourceImpl(this)
+
         initBroadcastingView()
-        joinChannel()
+        startLive()
+
+        initBtnListeners()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        rtcEngine()?.leaveChannel()
+        disposables.clear()
     }
 
     private fun initBroadcastingView() {
@@ -28,8 +50,38 @@ class LiveActivity : AppCompatActivity() {
         }
     }
 
-    private fun joinChannel() {
-        rtcEngine()?.joinChannel(null, "afknle", null, 0)
+    private fun initBtnListeners() {
+        btn_stop_live.setOnClickListener {
+            stopLive()
+        }
+    }
+
+    private fun startLive() {
+        Observable.fromCallable { liveDataSource.start() }
+            .delay(1000, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                joinChannel(it.channelName, it.uid)
+            }, Throwable::printStackTrace)
+            .let { disposables.add(it) }
+    }
+
+    private fun joinChannel(channelName: String, uid: Int) {
+        rtcEngine()?.joinChannel(null, channelName, null, uid)
+    }
+
+    private fun stopLive() {
+        Observable.fromCallable { liveDataSource.stop() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                finish()
+            }, {
+                it.printStackTrace()
+                finish()
+            })
+            .let { disposables.add(it) }
     }
 
     private fun getBaseApplication() = application as BaseApplication

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SingleLineInputTextField">
+        <attr name="design_label" format="string|reference" />
+        <attr name="design_helper" format="string|reference" />
+        <attr name="design_text" format="string|reference" />
+        <attr name="design_showEmphasisMark" format="boolean" />
+        <attr name="design_textLimitCount" format="integer" min="1" />
+        <attr name="android:hint"/>
+    </declare-styleable>
+
+    <declare-styleable name="SelectableTextField">
+        <attr name="text_label" format="string" />
+        <attr name="android:hint" />
+    </declare-styleable>
+
+    <declare-styleable name="ErrorState">
+        <attr name="state_error" format="boolean" />
+    </declare-styleable>
+</resources>

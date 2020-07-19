@@ -5,4 +5,25 @@
     <color name="colorAccent">#1779C3</color>
 
     <color name="black">#000000</color>
+    <color name="grey10">#FCFCFC</color>
+    <color name="grey50">#F9F9F9</color>
+    <color name="grey70">#F5F5F5</color>
+    <color name="grey80">#EEEEEE</color>
+    <color name="grey100">#D8D8D8</color>
+    <color name="grey120">#CCCCCC</color>
+    <color name="grey150">#AAAAAA</color>
+    <color name="grey200">#858585</color>
+    <color name="grey400">#333333</color>
+    <color name="grey450">#222222</color>
+
+    <color name="white">@android:color/white</color>
+    <color name="yellow50">#FAF5F0</color>
+    <color name="yellow20">#FFF5E2</color>
+    <color name="yellow100">#E19A11</color>
+    <color name="brown100">#665635</color>
+    <color name="orange100">#F3613A</color>
+    <color name="red10">#FDECE8</color>
+    <color name="red20">#FBD8D0</color>
+    <color name="red100">#EA5128</color>
+    <color name="blue100">#1B8EE4</color>
 </resources>

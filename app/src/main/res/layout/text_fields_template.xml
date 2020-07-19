@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/label_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/grey200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="design_label" />
+
+    <ImageView
+        android:id="@+id/asterisk_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/label_textview"
+        app:layout_constraintStart_toEndOf="@+id/label_textview"
+        app:layout_constraintTop_toTopOf="@+id/label_textview"
+        app:srcCompat="@drawable/ico_vector_asterisk"
+        tools:src="@drawable/ico_vector_asterisk" />
+
+    <ScrollView
+        android:id="@+id/scroll_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:addStatesFromChildren="true"
+        android:background="@drawable/selector_bg_stroke_grey"
+        app:layout_constraintTop_toBottomOf="@+id/label_textview">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:addStatesFromChildren="true">
+
+            <com.example.risogelato.ui.component.ErrorStateEditText
+                android:id="@+id/input_edittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_marginStart="12dp"
+                android:paddingTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:paddingBottom="12dp"
+                android:textColor="@color/selector_text_field_text_color"
+                android:textColorHint="@color/grey120"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/trailing_icon_imageview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginEnd="12dp"
+                tools:text="design_text" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/trailing_icon_imageview"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/input_edittext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/input_edittext" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/helper_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:duplicateParentState="true"
+        android:textColor="@color/selector_text_field_helper_text_color"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scroll_input_container"
+        tools:text="design_helper" />
+
+    <TextView
+        android:id="@+id/count_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="end"
+        android:textColor="@color/grey150"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/scroll_input_container"
+        app:layout_constraintTop_toBottomOf="@+id/scroll_input_container"
+        tools:text="0/0자(design_textLimitCount)" />
+</merge>

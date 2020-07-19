@@ -19,8 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +30,25 @@
         </activity>
 
         <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.SignInActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.SignUpActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.RegisterStoreActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.LiveActivity"
             android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

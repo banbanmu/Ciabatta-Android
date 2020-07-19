@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/img_icon"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/icon_ciabatta_black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.example.risogelato.ui.component.SingleLineInputTextField
+        android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="이름을 입력하세요"
+        app:design_label="이름"
+        app:layout_constraintTop_toBottomOf="@+id/img_icon" />
+
+    <com.example.risogelato.ui.component.SingleLineInputTextField
+        android:id="@+id/input_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="6자 이상 입력하세요"
+        app:design_label="비밀번호"
+        app:layout_constraintTop_toBottomOf="@+id/input_name" />
+
+    <TextView
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:background="@drawable/bg_rect_fill_yellow100_radius_6"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:text="로그인"
+        app:layout_constraintTop_toBottomOf="@+id/input_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="@color/grey150"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_in"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

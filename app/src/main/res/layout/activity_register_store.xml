@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/view_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/toolbar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_close_black_24" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="가게 정보를 입력해주세요"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/view_toolbar" />
+
+    <com.example.risogelato.ui.component.SingleLineInputTextField
+        android:id="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="24dp"
+        android:hint="가게 이름을 입력하세요"
+        app:design_label="상호"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+    <com.example.risogelato.ui.component.SingleLineInputTextField
+        android:id="@+id/input_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="가게 주소를 입력해주세요"
+        app:design_label="주소"
+        app:layout_constraintTop_toBottomOf="@+id/input_name" />
+
+    <com.example.risogelato.ui.component.SingleLineInputTextField
+        android:id="@+id/input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="가게 전화번호를 입력하세요"
+        app:design_label="전화번호"
+        app:layout_constraintTop_toBottomOf="@+id/input_address" />
+
+    <com.example.risogelato.ui.component.SelectableTextField
+        android:id="@+id/input_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="업종을 입력해주세요"
+        app:layout_constraintTop_toBottomOf="@+id/input_phone"
+        app:text_label="업종" />
+
+    <TextView
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_rect_fill_yellow100_radius_6"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="가게 등록"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_category" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
