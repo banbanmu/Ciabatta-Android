@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
+    private var store: Store? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -71,6 +73,8 @@ class MainActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                this.store = it
+
                 txt_name.text = it.name
                 txt_address.text = it.address
                 txt_category.text = it.category.name
@@ -117,11 +121,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToLive() {
-        startActivity(Intent(this, LiveActivity::class.java))
+        store?.let {
+            startActivity(LiveActivity.newIntent(this, it))
+        }
     }
 
     private fun navigateToAddMenu(store: Store) {
-//        startActivity(Intent(this, SignInActivity::class.java))
         startActivity(MenuEditActivity.newIntent(this, store, null))
     }
 }

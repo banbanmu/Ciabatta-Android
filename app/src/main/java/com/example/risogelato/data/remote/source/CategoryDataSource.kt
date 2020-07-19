@@ -21,6 +21,6 @@ class CategoryDataSourceImpl(context: Context) : CategoryDataSource {
             throw RuntimeException("카테고리를 불러오지 못했습니다")
         }
 
-        return categoryList?.categories ?: emptyList()
+        return categoryList?.categories.orEmpty()
     }
 }
