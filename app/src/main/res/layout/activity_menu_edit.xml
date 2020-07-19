@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/view_toolbar"
@@ -11,72 +12,82 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/toolbar_back"
+            android:id="@+id/toolbar_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/outline_arrow_back_black_24" />
-    </androidx.appcompat.widget.Toolbar>
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/outline_close_black_24" />
 
-    <TextView
-        android:id="@+id/txt_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="이름과 비밀번호를 입력해주세요"
-        android:textColor="@color/black"
-        android:textSize="21sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/view_toolbar" />
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            tool:text="메뉴 추가" />
+    </androidx.appcompat.widget.Toolbar>
 
     <com.example.risogelato.ui.component.SingleLineInputTextField
         android:id="@+id/input_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="이름을 입력하세요"
-        app:design_label="이름"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+        android:hint="메뉴명을 입력하세요"
+        app:design_label="메뉴명"
+        app:layout_constraintTop_toBottomOf="@+id/view_toolbar" />
 
     <com.example.risogelato.ui.component.SingleLineInputTextField
-        android:id="@+id/input_password"
+        android:id="@+id/input_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="6자 이상 입력하세요"
-        app:design_label="비밀번호"
+        android:hint="예) 비오는 날에 땡기는 얼큰한 국물~"
+        app:design_label="설명"
         app:layout_constraintTop_toBottomOf="@+id/input_name" />
 
     <com.example.risogelato.ui.component.SingleLineInputTextField
-        android:id="@+id/input_phone"
+        android:id="@+id/input_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="휴대폰 번호를 입력하세요"
-        app:design_label="전화번호"
-        app:layout_constraintTop_toBottomOf="@+id/input_password" />
+        android:inputType="number"
+        android:hint="가격을 입력해주세요"
+        app:design_label="가격"
+        app:layout_constraintTop_toBottomOf="@+id/input_description" />
 
     <TextView
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/bg_rect_fill_primary_radius_6"
+        android:background="@drawable/bg_rect_fill_secondary_radius_6"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="회원가입"
         android:textColor="@color/white"
         android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="저장"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/input_price" />
+
+    <TextView
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/grey200"
+        android:text="메뉴 삭제"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

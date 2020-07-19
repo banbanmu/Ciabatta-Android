@@ -48,10 +48,12 @@ class SingleLineInputTextField @JvmOverloads constructor(
         get() = super.isErrorState
         set(value) { super.isErrorState = value }
 
+    private var inputType: Int = EditorInfo.TYPE_CLASS_TEXT
+
     init {
         inputEdittext.apply {
             maxLines = INPUT_MAX_LINES
-            inputType = EditorInfo.TYPE_CLASS_TEXT
+            inputType = this@SingleLineInputTextField.inputType
             setOnFocusChangeListener { _, _ ->
                 setTrailingIconVisibility()
             }
@@ -76,6 +78,7 @@ class SingleLineInputTextField @JvmOverloads constructor(
                 getString(R.styleable.SingleLineInputTextField_design_label)?.let { label = it }
                 getString(R.styleable.SingleLineInputTextField_design_helper)?.let { helper = it }
                 getString(R.styleable.SingleLineInputTextField_android_hint)?.let { hint = it }
+                getInt(R.styleable.SingleLineInputTextField_android_inputType, EditorInfo.TYPE_CLASS_TEXT).let { inputType = it }
                 labelEmphasisMarkShown = getBoolean(R.styleable.SingleLineInputTextField_design_showEmphasisMark, false)
             } finally {
                 recycle()

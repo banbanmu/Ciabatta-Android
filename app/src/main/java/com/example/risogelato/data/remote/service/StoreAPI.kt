@@ -21,6 +21,6 @@ interface StoreAPI {
         @Body params: RequestBody
     ): Call<ResponseBody>
 
-    @GET("/store/category")
+    @GET("/store")
     fun get(): Call<Store>
 }

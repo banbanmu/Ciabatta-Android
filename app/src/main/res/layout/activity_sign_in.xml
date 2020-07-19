@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:inputType="textPassword"
         android:hint="6자 이상 입력하세요"
         app:design_label="비밀번호"
         app:layout_constraintTop_toBottomOf="@+id/input_name" />
@@ -46,7 +47,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:gravity="center"
-        android:background="@drawable/bg_rect_fill_yellow100_radius_6"
+        android:background="@drawable/bg_rect_fill_primary_radius_6"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:text="로그인"

@@ -6,7 +6,8 @@
         <attr name="design_text" format="string|reference" />
         <attr name="design_showEmphasisMark" format="boolean" />
         <attr name="design_textLimitCount" format="integer" min="1" />
-        <attr name="android:hint"/>
+        <attr name="android:hint" />
+        <attr name="android:inputType" />
     </declare-styleable>
 
     <declare-styleable name="SelectableTextField">

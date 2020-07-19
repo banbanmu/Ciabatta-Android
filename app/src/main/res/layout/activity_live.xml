@@ -21,7 +21,7 @@
         android:paddingEnd="10dp"
         android:paddingBottom="6dp"
         android:background="@drawable/bg_rect_stroke_yellow100_radius_4"
-        android:textColor="@color/yellow100"
+        android:textColor="@color/primary"
         android:textStyle="bold"
         android:text="방송 종료"
         app:layout_constraintTop_toTopOf="parent"

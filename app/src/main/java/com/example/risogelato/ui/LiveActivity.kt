@@ -6,6 +6,8 @@ import com.example.risogelato.R
 import com.example.risogelato.common.BaseApplication
 import com.example.risogelato.data.remote.source.LiveDataSource
 import com.example.risogelato.data.remote.source.LiveDataSourceImpl
+import com.example.risogelato.domain.entity.ClipInfo
+import com.example.risogelato.domain.entity.ClipInfoList
 import io.agora.rtc.RtcEngine
 import io.agora.rtc.video.VideoCanvas
 import io.reactivex.Observable
@@ -72,7 +74,11 @@ class LiveActivity : AppCompatActivity() {
     }
 
     private fun stopLive() {
-        Observable.fromCallable { liveDataSource.stop() }
+        val clipInfoList = ClipInfoList(listOf(
+            ClipInfo("제육볶음", 3000, 5000),
+            ClipInfo("오징어볶음", 10000, 3000)
+        ))
+        Observable.fromCallable { liveDataSource.stop(clipInfoList) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

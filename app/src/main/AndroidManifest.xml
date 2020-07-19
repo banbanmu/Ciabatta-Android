@@ -46,6 +46,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.MenuEditActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.LiveActivity"
             android:screenOrientation="portrait" />
 

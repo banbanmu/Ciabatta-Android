@@ -1,8 +1,10 @@
 package com.example.risogelato.data.remote.service
 
 import com.example.risogelato.domain.entity.Live
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -12,5 +14,7 @@ interface LiveAPI {
     fun start(): Call<Live>
 
     @POST("/live/stop")
-    fun stop(): Call<ResponseBody>
+    fun stop(
+        @Body params: RequestBody
+    ): Call<ResponseBody>
 }
